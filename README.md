@@ -1,7 +1,13 @@
-# Code for negative-control calibration in educational data
+# Negative-control calibration in educational data
 
-The working manuscript and recent simulation scripts are in `methods article/jedm_submission/manuscript_20/`. The editorial audit and earlier simulations are in adjacent directories. OULAD models and data-loading code are in `ednet-mars/`.
+This repository accompanies a study of negative-control calibration and the assumptions needed to compare residual confounding across outcomes. It includes analyses of OULAD and XES3G5M alongside known-truth simulations.
 
-Original relative paths are retained. Raw datasets, processed parquet files, trained models and CSV results are excluded. Reproduction requires the original OULAD and XES3G5M inputs and the appropriate processed data files. The scripts expect these inputs at the paths they specify.
+## Repository structure
 
-The package has not been validated as a standalone reproducible environment. Consult `methods article/jedm_submission/editorial_revision/README_RU.md` and the experiment protocols before running analyses. Python dependencies include NumPy, pandas, scikit-learn, XGBoost, pyarrow, matplotlib and threadpoolctl. Building the manuscript requires a LaTeX installation.
+- code/ contains analysis scripts, simulation code and supporting OULAD and XES3G5M modules.
+- results/ contains saved experiment results.
+- results/figure/ contains figures.
+
+## Data and reproduction
+
+Obtain the OULAD and XES3G5M datasets separately. Scripts require their expected input files and Python dependencies. Source directories are retained within code/ and data paths may need adjustment for a different machine. The complete workflow has not yet been verified in a clean environment.
