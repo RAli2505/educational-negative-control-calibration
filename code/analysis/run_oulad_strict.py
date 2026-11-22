@@ -16,7 +16,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-EDNET = ROOT.parent / "ednet-mars"
+EDNET = ROOT.parent / "education_models"
 OUT = ROOT / "results"
 
 
@@ -51,12 +51,12 @@ def main() -> None:
     inputs = [EDNET / "data" / "oulad" / "processed" / name for name in ("daily_vle.parquet", "student_target.parquet")]
     checksums = {str(path.relative_to(EDNET)): sha256(path) for path in inputs}
     versions = {name: importlib.metadata.version(name) for name in ("numpy", "pandas", "scikit-learn", "xgboost")}
-    manifest = {"seed": 42, "k_folds": 5, "foundation": "ednet-mars/models/uplift_oulad.py",
+    manifest = {"seed": 42, "k_folds": 5, "foundation": "education_models/models/uplift_oulad.py",
                 "commands": [" ".join(c) for c in commands], "python": sys.version,
                 "platform": platform.platform(), "packages": versions, "input_sha256": checksums,
-                "outputs": ["oulad_primary_strict.json", "../ednet-mars/results/oulad/uplift_metrics.json",
-                            "../ednet-mars/results/oulad/uplift_evalue_robustness.json",
-                            "../ednet-mars/results/oulad/uplift_pos_multiT.json"]}
+                "outputs": ["oulad_primary_strict.json", "../education_models/results/oulad/uplift_metrics.json",
+                            "../education_models/results/oulad/uplift_evalue_robustness.json",
+                            "../education_models/results/oulad/uplift_pos_multiT.json"]}
     (OUT / "oulad_manifest_strict.json").write_text(json.dumps(manifest, indent=2))
     print(f"wrote {OUT / 'oulad_primary_strict.json'}")
     print(f"wrote {OUT / 'oulad_manifest_strict.json'}")

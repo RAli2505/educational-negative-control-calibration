@@ -9,7 +9,7 @@ import pandas as pd
 
 ROOT=Path(__file__).resolve().parent
 WORK=ROOT.parent
-PROJECT=WORK.parent.parent/'ednet-mars'
+PROJECT=WORK.parent.parent/'education_models'
 ARTICLE=WORK.parent
 
 

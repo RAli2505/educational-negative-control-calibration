@@ -25,7 +25,7 @@ def digest(path):
 def populations():
     # Exact finite synthetic population: every stratum and latent combination.
     cells = np.array([(z, u, v) for z in range(3) for u in [-1., 1.] for v in [-1., 1.]])
-    project = WORK.parent.parent / 'ednet-mars'
+    project = WORK.parent.parent / 'education_models'
     target_path = project / 'data/oulad/processed/student_target.parquet'
     split_path = project / 'data/oulad/splits/train.parquet'
     keys = ['id_student', 'code_module', 'code_presentation']

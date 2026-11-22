@@ -1,7 +1,7 @@
 """Validate archived OULAD primary results and reproduce panel diagnostics.
 
 This script is intentionally not presented as a raw-data rerun. The current
-archive contains a causal-uplift foundation in ednet-mars at commit a49a36f,
+archive contains a causal-uplift foundation in education_models at commit a49a36f,
 but does not yet record the exact article configuration and command. The script
 validates registered article output and reruns the panel bootstrap/LOO diagnostic.
 """

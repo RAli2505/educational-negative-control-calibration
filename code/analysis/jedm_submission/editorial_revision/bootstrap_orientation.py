@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 ROOT=Path(__file__).resolve().parent
-PROJECT=ROOT.parent.parent.parent/'ednet-mars'
+PROJECT=ROOT.parent.parent.parent/'education_models'
 
 
 def main():

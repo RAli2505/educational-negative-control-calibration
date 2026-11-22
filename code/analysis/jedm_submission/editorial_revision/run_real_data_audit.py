@@ -17,7 +17,7 @@ from xgboost import XGBClassifier
 
 ROOT=Path(__file__).resolve().parent
 WORK=ROOT.parent
-PROJECT=WORK.parent.parent/'ednet-mars'
+PROJECT=WORK.parent.parent/'education_models'
 ARTICLE=WORK.parent
 RAW_OULAD=WORK.parent.parent.parent/'датасет/oulad'
 OUT=ROOT/'evidence'

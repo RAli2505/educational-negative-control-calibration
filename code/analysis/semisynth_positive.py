@@ -45,7 +45,7 @@ import pandas as pd
 from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.model_selection import KFold
 
-DATA = Path(__file__).parents[1] / "ednet-mars" / "data" / "oulad" / "processed"
+DATA = Path(__file__).parents[1] / "education_models" / "data" / "oulad" / "processed"
 OUT = Path(__file__).parent / "results" / "semisynth_positive.json"
 KEYS = ["code_module", "code_presentation", "id_student"]
 SEED = 20260626
