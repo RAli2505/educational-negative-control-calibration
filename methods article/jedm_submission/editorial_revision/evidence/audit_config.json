@@ -1,0 +1,14 @@
+{
+  "seed": 20260626,
+  "analysis_plan_sha256": "62448de0d47d8a48ac6e5efa540475d9e181e398c6a7355ea93948c1a67796af",
+  "source_sha256": "6de0ddfe48f1a40823fc4186e5b868af544bbe72443b4fefb6a6498bac95e22f",
+  "python": "C:\\Users\\user\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe",
+  "packages": {
+    "numpy": "2.5.1",
+    "pandas": "3.0.1",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "pyarrow": "23.0.1"
+  },
+  "note": "Prospective post-editorial diagnostic; original sign/equal-pool/MoM correction retained"
+}

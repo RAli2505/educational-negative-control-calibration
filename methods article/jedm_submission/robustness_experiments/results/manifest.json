@@ -1,0 +1,11 @@
+{
+  "elapsed_seconds": 219.65,
+  "summary_rows": 192,
+  "replication_rows": 192000,
+  "verification": "passed",
+  "output_sha256": {
+    "population_truth.csv": "ba371340c594091955c2b3eccdd2993c493894cbafa153cb43dd20397c877e0d",
+    "replications.csv": "d362289ebc9518417d7e63ba0f8fd7d6711937ea240f04f50e65f21718af5e59",
+    "summary.csv": "8044d478e58dd0b728b9d5d2bdf66e1378ed40605ea7c52affa1cc350dbb1112"
+  }
+}

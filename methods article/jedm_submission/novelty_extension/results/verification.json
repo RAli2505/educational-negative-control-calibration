@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "replicate_rows": 928000,
+  "scenario_method_groups": 928,
+  "reconstructed_metrics": {
+    "bias": 1.4224732503009818e-16,
+    "rmse": 1.2836953722228372e-16,
+    "coverage": 0.0,
+    "rejection": 0.0,
+    "width": 3.3306690738754696e-16
+  },
+  "paired_mse_and_mcse": "passed",
+  "protocol_and_source_hashes": "passed",
+  "note": "Checks numerical consistency, not causal assumptions or novelty."
+}

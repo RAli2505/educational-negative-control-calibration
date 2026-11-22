@@ -1,0 +1,37 @@
+{
+  "dataset": "OULAD",
+  "analysis_sample_n": 5859,
+  "estimand": "average treatment effect of on-time first-assessment submission on retention",
+  "target_outcome": "retention",
+  "uncalibrated": {
+    "method": "cross-fit AIPW",
+    "ate": 0.0488,
+    "ci95": [0.013, 0.085]
+  },
+  "naive_calibration": {
+    "ate": 0.0750,
+    "ci95": [0.0365, 0.1136],
+    "mu": -0.026233333333333334,
+    "tau": 0.006696690725027303
+  },
+  "sign_aware_calibration": {
+    "ate": 0.0395,
+    "ci95": [-0.025763066067678822, 0.10476306606767884],
+    "mu": 0.0093,
+    "tau": 0.027692652455118844,
+    "evalue": 1.31,
+    "evalue_ci_lower": 1.14
+  },
+  "qini_empirical_null": {
+    "observed": 429.0,
+    "mean": 457.0,
+    "sd": 175.0,
+    "p_value": 0.56
+  },
+  "provenance": {
+    "status": "archived_article_output",
+    "causal_foundation": "ednet-mars/models/uplift_oulad.py at commit a49a36f",
+    "raw_pipeline_script": null,
+    "note": "The panel bootstrap and leave-one-control-out analysis is reproduced by panel_bootstrap_loo.py. The causal-uplift foundation exists in ednet-mars; the exact article configuration, commit, and command must be recorded before submission."
+  }
+}

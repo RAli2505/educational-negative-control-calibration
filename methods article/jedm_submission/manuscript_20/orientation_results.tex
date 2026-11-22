@@ -1,0 +1,13 @@
+A student-cluster bootstrap (2000 repetitions) of the full OULAD training-key cohort, before the support restriction, examines marginal proxy-sign stability. 
+It does not refit nuisance models or estimate total causal-effect uncertainty.
+\begin{table}[htbp]\centering\small
+\caption{OULAD marginal sign stability in the full 5859-registration training cohort. Bootstrap sign retention is a resampling frequency, not a posterior probability.}\label{tab:orientation}
+\begin{tabularx}{\textwidth}{Xrrr}\toprule Control & Correlation & Bootstrap interval & Sign retained \\\midrule
+Declared disability & -0.005 & [-0.032, +0.023] & 63.9\% \\
+Male indicator & +0.145 & [+0.121, +0.169] & 100.0\% \\
+Age 35+ & +0.140 & [+0.111, +0.166] & 100.0\% \\
+Higher education & +0.036 & [+0.011, +0.061] & 99.7\% \\
+IMD 50+ & +0.018 & [-0.008, +0.042] & 91.2\% \\
+Previous attempts & -0.020 & [-0.045, +0.005] & 94.0\% \\
+\bottomrule\end{tabularx}\end{table}
+In particular, the disability and previous-attempt correlations are small and their bootstrap intervals cross zero. This weakens the case for treating their estimated orientations as known confounding directions. The leading component explains 20.7\% of the common-support control-correlation variance; this is a descriptive statistic and neither confirms nor rejects a particular latent-factor model.

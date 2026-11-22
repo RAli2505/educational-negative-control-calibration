@@ -1,0 +1,14 @@
+{
+  "linear_rows": 196,
+  "binary_rows": 32,
+  "checks": "passed",
+  "linear_conditional_success": {
+    "sign_mom": 8,
+    "sign_covariance": 12,
+    "reference_transfer_fieller_hull": 18
+  },
+  "binary_conditional_success": {
+    "sign_mom": 2,
+    "sign_covariance": 2
+  }
+}

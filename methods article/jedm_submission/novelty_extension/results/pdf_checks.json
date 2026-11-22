@@ -1,0 +1,11 @@
+{
+  "supplement_pages": 11,
+  "combined_pages": 23,
+  "unresolved_reference_markers": 0,
+  "old_pdf_sha256": "28114d90486071a02c1b72d09e983d4c3597c8b60d00db57663d15e28070f5e7",
+  "output_hashes": {
+    "novelty_extension\\paper_supplement\\main.pdf": "c9f543cc0ecfab8f4729fd18c610f2558465e7b79fac04b579b257250f3ec0b1",
+    "novelty_extension\\manuscript_with_extension.pdf": "86a0905f4a09667fc0e2343a874e76ebed1fcef43b8702f66949500f47cb3b9f"
+  },
+  "visual_review": "All supplement pages reviewed; final bibliography page rerendered after layout adjustment"
+}

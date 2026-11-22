@@ -1,0 +1,124 @@
+{
+  "full": {
+    "naive": {
+      "mu": -0.02623333333333333,
+      "tau": 0.006696690725027311,
+      "ate": 0.07503520583523528,
+      "lo": 0.03649894865581977,
+      "hi": 0.11357146301465079,
+      "sig": true
+    },
+    "sign_aware": {
+      "mu": 0.009300000000000001,
+      "tau": 0.027692652455118847,
+      "ate": 0.039501872501901944,
+      "lo": -0.02575699510782334,
+      "hi": 0.10476074011162723,
+      "sig": false
+    }
+  },
+  "bootstrap": {
+    "naive": {
+      "mu_se": 0.009047902533067467,
+      "mu_ci": [
+        -0.04413333333333334,
+        -0.009520833333333515
+      ],
+      "tau_se": 0.007006147622584231,
+      "ate_ci_boot": [
+        0.058322705835235286,
+        0.09293520583523529
+      ]
+    },
+    "sign_aware": {
+      "mu_se": 0.013465415110330527,
+      "mu_ci": [
+        -0.015583333333333333,
+        0.035666666666666666
+      ],
+      "tau_se": 0.010985200493728487,
+      "ate_ci_boot": [
+        0.01313520583523528,
+        0.06438520583523528
+      ]
+    }
+  },
+  "loo": {
+    "naive": {
+      "rows": [
+        {
+          "dropped": "disability",
+          "ate": 0.0713,
+          "sig": true
+        },
+        {
+          "dropped": "gender",
+          "ate": 0.0807,
+          "sig": true
+        },
+        {
+          "dropped": "age_band",
+          "ate": 0.0741,
+          "sig": true
+        },
+        {
+          "dropped": "highest_education",
+          "ate": 0.0794,
+          "sig": true
+        },
+        {
+          "dropped": "imd_band",
+          "ate": 0.0767,
+          "sig": true
+        },
+        {
+          "dropped": "num_of_prev_attempts",
+          "ate": 0.068,
+          "sig": true
+        }
+      ],
+      "ate_min": 0.068,
+      "ate_max": 0.0807,
+      "always_sig": true,
+      "never_sig": false
+    },
+    "sign_aware": {
+      "rows": [
+        {
+          "dropped": "disability",
+          "ate": 0.0467,
+          "sig": false
+        },
+        {
+          "dropped": "gender",
+          "ate": 0.0381,
+          "sig": false
+        },
+        {
+          "dropped": "age_band",
+          "ate": 0.0315,
+          "sig": false
+        },
+        {
+          "dropped": "highest_education",
+          "ate": 0.0367,
+          "sig": false
+        },
+        {
+          "dropped": "imd_band",
+          "ate": 0.0341,
+          "sig": false
+        },
+        {
+          "dropped": "num_of_prev_attempts",
+          "ate": 0.0499,
+          "sig": true
+        }
+      ],
+      "ate_min": 0.0315,
+      "ate_max": 0.0499,
+      "always_sig": false,
+      "never_sig": false
+    }
+  }
+}

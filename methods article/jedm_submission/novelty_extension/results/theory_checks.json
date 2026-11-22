@@ -1,0 +1,19 @@
+{
+  "structural_enumeration_checks": 174,
+  "status": "passed",
+  "summary_equivalent_models": [
+    {
+      "tau": 0.0,
+      "loading": 0.14,
+      "observed_contrast": 0.084,
+      "mean_oriented_control": 0.084
+    },
+    {
+      "tau": 0.042,
+      "loading": 0.07,
+      "observed_contrast": 0.084,
+      "mean_oriented_control": 0.084
+    }
+  ],
+  "caveat": "Equivalence of retained population contrasts/signs/marginal variances, not equivalence of the full observed joint distribution."
+}

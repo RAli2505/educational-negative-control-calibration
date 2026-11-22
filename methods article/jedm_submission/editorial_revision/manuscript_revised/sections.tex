@@ -1,0 +1,188 @@
+\section{Introduction}
+
+Educational data mining increasingly asks whether an observed behaviour or learning condition changes a later educational outcome. Flexible treatment-effect estimators help model measured covariates, but their causal interpretation still depends on an appropriate intervention, temporal ordering, overlap, and assumptions about unmeasured confounding. Negative controls can reveal associations that a proposed causal design should not produce \cite{lipsitch2010}. Using these associations to estimate the bias of a different, substantive outcome requires additional assumptions.
+
+This study examines a small modification of negative-control pooling: orienting each control estimate by its association with a prespecified proxy before averaging. The orientation is a sign-alignment operation, not an independent identification strategy. Its potential usefulness depends on whether the oriented controls quantify bias on a scale relevant to the target. Different student attributes may satisfy a no-treatment-effect condition while failing to provide interchangeable measurements of residual confounding.
+
+The contribution is an assessment of the conditions and limitations of this procedure in educational data. First, a bias--variance decomposition states exactly when subtracting an estimated correction improves mean squared error. Second, known-truth simulations examine both matching and nonmatching confounding structures. Third, common-design audits of OULAD and a specifically identified XES3G5M source investigate control coding, adjustment-set consistency, shared support, proxy associations and leave-one-control-out null prediction. None of these diagnostics by itself establishes the unknown causal effect in an observational dataset.
+
+The study retains the original orientation and equal-pooling rule. It does not introduce externally estimated transfer coefficients or adaptive control weights. The aim is to distinguish a useful diagnostic modification from an unsupported claim of general causal calibration. A shift toward or away from statistical significance is not the success criterion: known-truth error and interval behaviour matter, and observational estimates remain conditional on substantive assumptions.
+
+\section{Background and related work}
+
+\subsection{Negative controls: detection versus correction}
+
+A negative-control outcome is not caused by the treatment under investigation. This exclusion is necessary for a control to diagnose bias, but does not imply that its observed association equals the bias of the target outcome \cite{lipsitch2010,coca2014}. For example, a demographic characteristic cannot plausibly be changed by submitting an assignment on time, yet its associations may reflect opportunity, prior selection, support needs or model specification differently from a retention outcome.
+
+COCA already addresses the inadequacy of simply equating control and target bias, including continuous and binary outcomes and sensitivity to an imperfect control \cite{coca2014}. Confounding-bridge methods use further restrictions relating the target and proxy outcomes; single-proxy extensions also provide identification and estimation under explicitly stated conditions \cite{miao2024,park2024}. Consequently, changing signs or recording a different bias magnitude is not presented here as a new general identification principle.
+
+\subsection{Empirical calibration and its assumptions}
+
+Empirical confidence-interval calibration models systematic error using negative and, in some implementations, synthetic positive controls \cite{schuemie2018}. The primary literature does not require all controls to have identical bias magnitude and structure: its exchangeability assumption concerns their error distribution and the target. The arithmetic-mean/method-of-moments (MoM) implementation examined here is a specific simplified procedure. Its failure does not establish failure of all published empirical-calibration procedures.
+
+Previous simulations have examined suitable and unsuitable controls and heterogeneous confounder effects \cite{hwang2022}. Bias under violations of proximal assumptions and sensitivity with multiple factor-structured outcomes have also been studied \cite{cobzaru2024,zheng2024}. The present analysis therefore focuses on a transparent educational-data audit, rather than claiming priority for sensitivity analysis or heterogeneous control panels.
+
+\section{Methods}
+
+\subsection{Data, target quantities and the common-design audit}
+
+OULAD contains student characteristics, assessment records and virtual-learning-environment interactions \cite{kuzilek2017}. The new audit uses the archived 2013 training-registration keys and the recovered processed inputs whose checksums match the archived input manifest. Treatment is on-time submission of the first assessment. Click features use observations strictly before the first-assessment deadline. Two distinct binary endpoints are reported: non-withdrawal, defined as final result other than Withdrawn, and successful completion, defined as Pass or Distinction. They must not be conflated.
+
+The original demographic control fields are removed from the adjustment set for \emph{every} outcome in the common-design audit. The shared covariates are region, studied credits, registration date and seven pre-deadline click-trend features. This is a deliberately restricted diagnostic specification. It changes the adjustment design relative to a target model containing all demographics and must not be read as an identical rerun of that target model. All outcomes share propensity estimates, cross-fit folds and a support mask. Registrations from the same student remain in the same fold.
+
+For XES3G5M, the new analysis reads the explicitly named question-level training-validation sequence release \cite{liu2023}. It does not use a generic processed directory whose contents may have been replaced by another dataset. Six thousand eligible users are sampled reproducibly, and whole users are allocated to development or holdout. The sample is a new, explicitly sourced audit cohort. The official overlapping test-window files are not treated as independent student histories.
+
+\subsection{Estimation}
+
+For a binary exposure $A$, outcome $Y$ and measured covariates $X$, the AIPW score is
+\[
+\psi_i=\widehat m_1(X_i)-\widehat m_0(X_i)
++\frac{A_i\{Y_i-\widehat m_1(X_i)\}}{\widehat e(X_i)}
+-\frac{(1-A_i)\{Y_i-\widehat m_0(X_i)\}}{1-\widehat e(X_i)}.
+\]
+Five group cross-fit folds and the same gradient-boosted-tree settings are used across the real-outcome and control fits. Observations outside the common estimated propensity support $[0.02,0.98]$ are excluded. The point estimate is the mean score on that common support. Cluster sums of centred scores give the student-cluster variance estimate in OULAD; XES has one analytical row per user.
+
+Under consistency, positivity and appropriate conditional exchangeability, this estimating strategy can target a causal effect. Hidden confounding is precisely the concern here, so the empirical scores are reported as adjusted observational contrasts. Cross-fitting does not make the unmeasured-confounding assumption true. Conditional nuisance-score uncertainty also does not by itself quantify the uncertainty in transporting bias from controls.
+
+The new XES audit uses the same ordinary AIPW/support design for both treatment definitions and all outcomes. It does not silently reuse a treatment-dependent weighting formula as a validated doubly robust overlap-population estimator. The distinction between a shared design and a set of separate outcome-specific adjustment schemes is central to the audit.
+
+\subsection{Control selection and substantive comparability}
+
+Table~\ref{tab:control-rationale} separates the no-effect rationale from the much stronger bias-comparability claim. The substantive pathways are hypotheses to examine, not measured latent constructs or proof that a single engagement factor generates every association.
+
+\begin{longtable}{p{.20\textwidth}p{.28\textwidth}p{.40\textwidth}}
+\caption{Control rationale and limits. Every binary coding is documented in the audit outputs.}\label{tab:control-rationale}\\
+\toprule Control & No-treatment-effect rationale & Why shared bias is not automatic \\
+\midrule\endfirsthead
+\toprule Control & No-treatment-effect rationale & Why shared bias is not automatic \\
+\midrule\endhead
+OULAD declared disability & Baseline status precedes the first-assessment exposure. & Support needs and reporting differ from engagement; disability is not a validated common-scale bias indicator. \\
+OULAD male indicator & Baseline demographic record cannot be changed by that submission. & Social and selection pathways need not match residual confounding of either educational endpoint. \\
+OULAD age 35+ & Baseline age category precedes exposure. & Work, caring and prior-study pathways may operate separately; an age threshold is an analyst coding choice. \\
+OULAD higher education & Entry qualification precedes exposure. & Prior achievement can affect treatment and outcome directly; it need not have the same loading as engagement. \\
+OULAD IMD 50+ & Recorded deprivation band precedes the assessment exposure. & Area-level deprivation is a contextual measure; missingness and regional meanings can differ. Missing values are explicitly counted. \\
+OULAD previous attempts & Earlier module attempts precede the current exposure. & Prior selection and history can create different confounding pathways; the indicator is not interchangeable with demographics. \\
+XES early accuracy & Prefix responses precede the middle window conditional on the chosen observation scheme. & Ability, item allocation and measurement error differ from later performance; fractional windows need an observation-process assumption. \\
+XES early ability & A prefix residual-accuracy summary is formed before middle-window exposure using development-prefix item information. & The summary is constructed, not directly observed latent ability; it shares response information with early accuracy. \\
+XES early activity & Prefix interaction count is observed before the middle window in the recorded sequence. & The prefix size is a function of total recorded history; validity requires that the window construction not create a treatment-dependent control. \\
+XES concept diversity & Distinct prefix concepts are recorded before exposure in the selected sequence. & Curriculum assignment, activity and opportunity may dominate; the count need not measure the same bias as correctness. \\
+\bottomrule
+\end{longtable}
+
+All controls are coded as binary indicators to make the numerical effect scale explicit. Equal risk-difference units do not establish equal residual-confounding magnitudes. The control being used as an outcome is never retained as a deterministic input feature. More strongly, the audit uses one shared adjustment set, rather than dropping a different feature for each control and assuming the resulting estimates describe the same residual design.
+
+\subsection{Orientation and the retained pooling procedure}
+
+Let $g$ be the prespecified proxy: pre-deadline click total in OULAD, and early residual accuracy in XES. For the target outcome and each control, define
+\[
+s_Y=\operatorname{sign}\{\operatorname{corr}(Y,g)\},\quad
+s_k=s_Y\operatorname{sign}\{\operatorname{corr}(C_k,g)\},\quad
+\widetilde t_k=s_k\widehat t_k.
+\]
+The implementation uses $+1$ when an estimated sign is exactly zero; near-zero associations are therefore especially weak orientation evidence. Estimated raw correlations need not identify the direction of \emph{residual} confounding after adjustment. A target correlation can also reflect the treatment mechanism and its effect. These are additional restrictions of the rule, not properties guaranteed by its formula.
+
+The equal-pool correction and MoM spread are
+\[
+\widehat\mu=K^{-1}\sum_{k=1}^K\widetilde t_k,\qquad
+\widehat h^2=\max\{0,\operatorname{var}(\widetilde t_k)-K^{-1}\sum_k\widehat\sigma_k^2\}.
+\]
+The retained corrected estimate is $\widehat t_c=\widehat t_Y-\widehat\mu$. The historical nominal interval formula is
+\[
+\widehat t_c\ \pm\ 1.96\sqrt{\widehat\sigma_Y^2+\widehat h^2}.
+\]
+The spread across controls is not the standard error of the estimated correction. This interval does not separately propagate uncertainty in estimated signs, panel selection, the empirical-null parameters or bias comparability. Its observational values are labelled nominal MoM intervals. A shared-score covariance calculation is reported only as a supplementary uncertainty diagnostic, not as proof of causal coverage.
+
+\subsection{Exact conditions for improvement}
+
+The following is a standard bias--variance identity applied to the retained procedure, not a new causal-identification theorem. Let $T$ be the uncorrected estimate, $C$ the entire estimated correction (including estimated orientation), and $\theta$ the fixed true effect. With finite second moments, write $B=\E(T)-\theta$, $\mu=\E(C)$, $V_C=\Var(C)$ and $K_C=\Cov(T,C)$. Then
+\[
+\MSE(T)-\MSE(T-C)=2B\mu-\mu^2-V_C+2K_C.
+\]
+\textit{Proof.} The corrected bias is $B-\mu$ and its variance is $\Var(T)+V_C-2K_C$. Subtracting this MSE from $\Var(T)+B^2$ proves the identity. Thus improvement requires
+\[
+2B\mu>\mu^2+V_C-2K_C.
+\]
+Even an unbiased bias correction, $\mu=B$, improves precision only when $B^2>V_C-2K_C$. The identity does not make $B$ observable in real data.
+
+For the special linear one-factor model, suppose target bias is $b_Y=\lambda_Y\Delta$ and correctly oriented control biases are $|\lambda_k|\Delta$. The remaining bias is
+\[
+\{\lambda_Y-K^{-1}\sum_k|\lambda_k|\}\Delta.
+\]
+Orientation removes the bias only when the average oriented loading equals the target loading. The familiar $2bf$ expression for the raw-pool error follows when every control has target bias magnitude $b$ and a fraction $f$ have the opposite sign. It is a special algebraic illustration, not a guarantee for heterogeneous real control panels.
+
+\subsection{Validation and falsification checks}
+
+Known-truth simulation reports bias, RMSE, interval coverage and rejection probability at null and non-null effects. Conditions matching the pooling assumption and conditions violating it are retained. The binary experiment uses cross-fit AIPW with logistic working models; its known marginal risk difference is calculated by Gaussian quadrature, not equated to a logit coefficient.
+
+In real data, each known-null control is also treated as a pseudo-target, with its correction constructed from the remaining controls. This leave-one-control-out exercise examines whether a panel predicts a held-out null outcome's apparent bias. In XES, the development correction is additionally applied to the corresponding holdout control using orientation fixed in development. The number of controls is small; a non-rejection is weak evidence, and success on null controls does not establish target exchangeability. Correlation matrices and their leading eigenvalue shares are descriptive diagnostics of panel structure, not estimates of a validated latent confounder.
+
+\section{OULAD case study}
+
+\subsection{Recomputed common-design results}
+
+The two endpoints are reported separately in Table~\ref{tab:real-results}. The input checksums match the archived processed OULAD inputs, but the new audit enforces the first-deadline cutoff, a common adjustment set and student-group cross-fitting. It is consequently a new sensitivity analysis, not a numerical reproduction claim for every archived model setting.
+
+\input{real_results.tex}
+
+The demographic controls have a credible baseline timing rationale, but there is no observed ground-truth target bias against which to validate their common magnitude. Holding adjustment and support fixed removes one procedural source of incomparability. It does not establish that disability, prior attempts and contextual deprivation are measurements of a single factor with retention-equivalent loadings.
+
+\subsection{Panel diagnostics}
+
+Table~\ref{tab:pseudo-targets} reports the leave-one-control-out checks. Individual intervals and proxy correlations are available in the machine-readable supplement. The nominal pooling interval should not be interpreted as a verified confidence interval for an intervention effect. Differences between non-withdrawal and successful completion also demonstrate why endpoint definitions must be fixed explicitly.
+
+\input{orientation_results.tex}
+
+\section{Cross-domain evaluation in XES3G5M}
+
+\subsection{Explicit source and temporally restricted construction}
+
+The cohort uses the named question-level training-validation sequence file. Padding is removed and repeated user--timestamp--question event keys are counted and deduplicated. Whole users are split 80/20. Item accuracy for the early-ability proxy is estimated only from development users' early prefixes; neither later development responses nor holdout outcomes are used to construct that item-reference map.
+
+Design A defines treatment as middle-window accuracy above the development median. Design B2 uses session-start regularity, where a new session begins after a gap greater than 30 minutes between consecutive timestamps, with at least four middle-window sessions and three positive between-session intervals. The late outcome and four early controls are dichotomised using development thresholds. The common adjustment variable is early wrong-concept count: this deliberately limited design excludes every feature defining a candidate control, identically for target and control analyses. It is not offered as a sufficient confounder set.
+
+Fractional early/middle/late windows depend on full observed sequence length. A treatment-related change in observation length can challenge a simple temporal-negative-control interpretation, particularly for early activity. Timing alone therefore does not certify validity. Accuracy, proxy ability and concept exposure also arise from related but nonidentical processes.
+
+\subsection{Results and held-out null checks}
+
+The newly sourced Design A and B2 results appear alongside OULAD in Table~\ref{tab:real-results}. The audit targets a common-support adjusted contrast, not the previously labelled overlap-weighted estimate. The two treatment definitions concern different behaviours and cannot be treated as replications of one intervention. The holdout pseudo-target results in Table~\ref{tab:pseudo-targets} evaluate null prediction under the retained pooling rule.
+
+\input{pseudo_results.tex}
+
+These checks are more relevant to panel suitability than whether a corrected target interval excludes zero. However, four related prefix controls provide a small and statistically dependent reference panel. Their null prediction performance cannot certify shared target bias, and the measured proxy is not a validation sample containing the unobserved confounder.
+
+\section{Discussion}
+
+\subsection{What the evidence supports}
+
+Sign alignment can prevent cancellation in a deliberately specified common-bias model. The simulation in Table~\ref{tab:simulation-results} supports conditional usefulness of the unchanged orientation/pooling rule. Its failures under different control magnitudes and incompatible factors show why the condition is consequential. A control's known zero causal effect does not imply that subtracting its association improves the target estimator.
+
+\input{simulation_results.tex}
+
+The real-data analyses instead provide design diagnostics. They investigate fixed adjustment, shared support, explicit coding, known-null prediction and outcome definitions. Positive or negative observational contrasts are not known causal effects, and a change in nominal significance cannot establish calibration accuracy. Removing or retaining controls on the basis of a desired target result would not validate the method.
+
+\subsection{What remains unverified}
+
+There is no demonstrated equality between the target's residual bias and the mean oriented control bias in either dataset. Proxy correlations are not direct measurements of that quantity; multiple confounders, different pathways, nonlinear links and measurement error can break the connection. The no-treatment-effect condition for baseline attributes is stronger than the corresponding timing argument for sequence-derived XES summaries, whose observation process needs additional care.
+
+Small panels cannot support a reliable normal empirical-null interpretation without further evidence. Estimated signs and empirical-null parameters add uncertainty, while controls are measured on the same people. A shared-score covariance calculation addresses dependence under fixed estimated signs, but does not solve identification. The MoM nominal intervals have no new theorem of causal coverage in this study. The binary simulation uses particular working models and does not establish universal performance for arbitrary retention mechanisms.
+
+In OULAD, a feature observed before the deadline may nevertheless follow the actual submission of an early submitter. Thus a deadline-restricted click window is not automatically a pre-exposure window for every individual. Establishing a well-defined treatment time and appropriate baseline covariates is a further requirement for an intervention interpretation; the present common-design analysis is a diagnostic observational audit.
+
+The archived real-data estimates are not substituted for the new audit. Input provenance, endpoint definitions, temporal cutoffs and weighting need to match before a numerical result can be treated as reproduced. These reproducibility conditions are necessary before making a substantive case for control comparability.
+
+\subsection{Position of the contribution}
+
+The orientation step is a simple methodological modification. The applied contribution is to expose its assumptions and examine them in educational-data designs, including unfavourable checks. It is not claimed to supersede COCA, confounding-bridge estimation or general empirical calibration. Those methods make different identifying and error-model assumptions; a broader comparison requires their actual implementations and matching estimands.
+
+Further evidence would include a substantively justified homogeneous control family, independent information about how its confounding relates to the target, or a benchmark with a credible causal reference effect. Repeated simulations that impose equality of bias magnitudes cannot supply that external evidence. If a panel fails the rationale or diagnostics, its members remain useful for bias detection but their pooled mean should not be represented as validated target-bias correction.
+
+\section{Conclusion}
+
+Orientation before negative-control pooling has conditional value, but cannot establish that heterogeneous outcomes measure commensurable residual bias. An exact MSE decomposition separates bias reduction from precision improvement. Known-truth simulations show both success and failure of the retained rule. Common-design real-data audits improve transparency about inputs, controls and estimator comparability while leaving causal identification unresolved. The appropriate claim is conditional calibration and diagnostic assessment, with explicit limitations on what the educational-data results establish.
+
+\section*{Data and code availability}
+
+The revision includes the audit analysis plan, raw-source checksums, code fingerprints, aggregate control results and known-truth simulation outputs. OULAD and XES3G5M are described by their original dataset publications. Student identifiers and raw records are not reproduced in the manuscript. The new real-data audit is post-screening work; it is not described as an externally preregistered analysis. Archived source gaps and unverified input provenance are recorded in the accompanying revision memo rather than silently claimed as complete reproduction.
+
+\section*{Conflicts of interest}
+The authors declare no competing interests.

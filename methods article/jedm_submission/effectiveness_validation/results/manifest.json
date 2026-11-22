@@ -1,0 +1,12 @@
+{
+  "elapsed_seconds": 189.33,
+  "summary_rows": 196,
+  "replication_rows": 196000,
+  "dataset_runs": 28000,
+  "verification": "passed",
+  "sha256": {
+    "diagnostics.csv": "bfe39502e6a71811bfc065d6a982c94accd20f7978c441fcd6b0ccc471e1a311",
+    "replications.csv": "52dc5938838231dfe47c63f4384d275d8f50a3141304004e84aeaf73617e3e50",
+    "summary.csv": "3df30be39df156880027c3eda0f9e5b7fa6954983292ab68cbc13ce246bdcf39"
+  }
+}

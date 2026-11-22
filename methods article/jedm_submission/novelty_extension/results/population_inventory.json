@@ -1,0 +1,118 @@
+{
+  "oulad_unique_students": 5823,
+  "source_role": "Empirical baseline distribution only; all exposures/outcomes/proxies generated",
+  "hashes": {
+    "C:\\Users\\user\\Documents\\Diser\\\u0441\u0438\u0441\u0442\u0435\u043c\u0430\\ednet-mars\\data\\oulad\\processed\\student_target.parquet": "cb49c9cd4fe39a6964a315c0fa505e05579ec40f3968d0a233dc75a7069ed02b",
+    "C:\\Users\\user\\Documents\\Diser\\\u0441\u0438\u0441\u0442\u0435\u043c\u0430\\ednet-mars\\data\\oulad\\splits\\train.parquet": "0e26924cd5f136dbc3e858d15219dcfed0d5fceda59012a0a0ebd27752de1e9f"
+  },
+  "population_aggregates": {
+    "synthetic": {
+      "n": 12,
+      "stratum_weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "latent_means": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ],
+      "latent_covariances": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            1.0
+          ]
+        ]
+      ]
+    },
+    "oulad_profile": {
+      "n": 5823,
+      "stratum_weights": [
+        0.0674909840288511,
+        0.671646917396531,
+        0.2608620985746179
+      ],
+      "latent_means": [
+        [
+          -0.5104325699745534,
+          -1.0
+        ],
+        [
+          -0.5263104065456261,
+          -0.859882383022245
+        ],
+        [
+          -0.63067807768269,
+          -0.5589203423304806
+        ]
+      ],
+      "latent_covariances": [
+        [
+          [
+            0.4487715686084081,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.452590810321261,
+            -0.0016317814402937562
+          ],
+          [
+            -0.0016317814402937562,
+            0.2606022873679853
+          ]
+        ],
+        [
+          [
+            0.3893419365240205,
+            0.01563812511349542
+          ],
+          [
+            0.01563812511349542,
+            0.6876080509291788
+          ]
+        ]
+      ]
+    }
+  }
+}

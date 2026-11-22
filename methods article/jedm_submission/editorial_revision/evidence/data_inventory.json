@@ -1,0 +1,137 @@
+{
+  "python": "C:\\Users\\user\\AppData\\Local\\Microsoft\\WindowsApps\\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\\python.exe",
+  "packages": {
+    "numpy": "2.5.1",
+    "pandas": "3.0.1",
+    "scikit-learn": "1.8.0",
+    "xgboost": "3.2.0",
+    "pyarrow": "23.0.1"
+  },
+  "oulad": {
+    "n_train": 5859,
+    "source_hashes": {
+      "data/oulad/processed/student_target.parquet": "cb49c9cd4fe39a6964a315c0fa505e05579ec40f3968d0a233dc75a7069ed02b",
+      "data/oulad/processed/daily_vle.parquet": "1496c29ab4021312185978c4bd57ac80644981ffae3240585b6762923a5360c6"
+    },
+    "matches_archived_input_hashes": true,
+    "demographics": {
+      "gender": {
+        "M": 3488,
+        "F": 2371
+      },
+      "age_band": {
+        "0-35": 4012,
+        "35-55": 1790,
+        "55<=": 57
+      },
+      "highest_education": {
+        "A Level or Equivalent": 2567,
+        "Lower Than A Level": 2241,
+        "HE Qualification": 943,
+        "Post Graduate Qualification": 59,
+        "No Formal quals": 49
+      },
+      "imd_band": {
+        "20-30%": 622,
+        "30-40%": 612,
+        "50-60%": 579,
+        "40-50%": 573,
+        "10-20": 559,
+        "70-80%": 552,
+        "90-100%": 534,
+        "60-70%": 533,
+        "0-10%": 513,
+        "80-90%": 509,
+        "nan": 273
+      },
+      "disability": {
+        "N": 5300,
+        "Y": 559
+      },
+      "num_of_prev_attempts": {
+        "0": 5223,
+        "1": 524,
+        "2": 99,
+        "3": 9,
+        "4": 3,
+        "6": 1
+      }
+    },
+    "final_results": {
+      "Pass": 3132,
+      "Fail": 1068,
+      "Withdrawn": 956,
+      "Distinction": 703
+    },
+    "retained_not_withdrawn": 0.8368322239289981,
+    "retained_not_withdrawn_or_fail": 0.6545485577743643
+  },
+  "xes": [
+    {
+      "split": "train",
+      "n_interactions": 1704701,
+      "n_users": 20767,
+      "columns": [
+        "user_id",
+        "timestamp",
+        "question_id",
+        "correct"
+      ],
+      "sha256": "348be5cc1ee4e0af7f08880f50201493509a796dfe7c4a84e25002ccc583ec47"
+    },
+    {
+      "split": "val",
+      "n_interactions": 366498,
+      "n_users": 20767,
+      "columns": [
+        "user_id",
+        "timestamp",
+        "question_id",
+        "correct"
+      ],
+      "sha256": "321a3c5d3509e7a5ea9443a9933ab0152631dc00f1dea1e6a0211300c2b0f962"
+    },
+    {
+      "split": "test",
+      "n_interactions": 353563,
+      "n_users": 20767,
+      "columns": [
+        "user_id",
+        "timestamp",
+        "question_id",
+        "correct"
+      ],
+      "sha256": "e06a1e71fa157cebe5f64e6f4c008fa64f1c4f8d98f041396863b464d686ab26"
+    }
+  ],
+  "source_code": {
+    "C:\\Users\\user\\Documents\\Diser\\система\\methods article\\run_oulad_strict.py": {
+      "sha256": "c5fef25571d97dfe7b43dfa97ba07681eced34fb344f8f70606814d1ce2dea1a",
+      "exists": true
+    },
+    "C:\\Users\\user\\Documents\\Diser\\система\\methods article\\run_xes3g5m_designs.py": {
+      "sha256": "180fcc04f62e36aa629e9b925d9df75c70bdb4c8521a0c609009d0ed512c68c0",
+      "exists": true
+    },
+    "C:\\Users\\user\\Documents\\Diser\\система\\methods article\\run_xes3g5m_design_b2.py": {
+      "sha256": "d4f029eef6dc87d4e6e8549c9778a1128125464cfcc5d17815aebc1334f23948",
+      "exists": true
+    },
+    "C:\\Users\\user\\Documents\\Diser\\система\\ednet-mars\\models\\uplift_oulad.py": {
+      "sha256": "a524f875e6d60c63ded802765910c8f5f7af6a92d2926e94ebe445f5ca8ea871",
+      "exists": true
+    },
+    "C:\\Users\\user\\Documents\\Diser\\система\\ednet-mars\\models\\uplift_core.py": {
+      "sha256": "6954811742064c2dacdbf8088a895c5e607c83e6e8822a0cb9f828555c2b1013",
+      "exists": true
+    },
+    "C:\\Users\\user\\Documents\\Diser\\система\\ednet-mars\\models\\pred_oulad.py": {
+      "sha256": "1f3e3cbe839ae7183f7c63b425b3aadf599631ca79bc2834d27706647921839d",
+      "exists": true
+    }
+  },
+  "missing_oulad_script_sources": [
+    "C:\\Users\\user\\Documents\\Diser\\система\\ednet-mars\\scripts\\uplift_evalue_robustness.py",
+    "C:\\Users\\user\\Documents\\Diser\\система\\ednet-mars\\scripts\\uplift_pos_multiT.py"
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "dataset": "OULAD",
+  "estimand": "ATE of on-time first-assessment submission on retention",
+  "temporal_split": "2013 train; 2014 holdout for Qini/AUUC",
+  "uncalibrated": {
+    "ate": 0.04880187250190195,
+    "se": 0.018486142059471924,
+    "ci95": [
+      0.012569034065336979,
+      0.08503471093846691
+    ],
+    "rr_retention": 1.0595829904369811,
+    "evalue": 1.310846046190099,
+    "evalue_ci_lower": 1.140170522058415,
+    "qini_coef": -51.11226338558947,
+    "auuc": 566.5344249524845,
+    "policy_at_k": {
+      "0.1": 0.2674914598464966,
+      "0.2": 0.21652904152870178,
+      "0.3": 0.18220140039920807
+    },
+    "n_train": 5859,
+    "n_test": 8696,
+    "n_trim": 127,
+    "treat_rate_train": 0.8059395801331285
+  },
+  "negative_control_calibration": {
+    "method": "Schuemie 2014 empirical-null (k=6 NC panel, MoM mu/tau)",
+    "ate_uncalibrated": 0.0488,
+    "se_uncalibrated": 0.0185,
+    "naive": {
+      "mu": -0.0262,
+      "tau": 0.0067,
+      "ate_calibrated": 0.075,
+      "se_calibrated": 0.0197,
+      "ci95": [
+        0.0365,
+        0.1136
+      ],
+      "still_significant": true
+    },
+    "sign_aware": {
+      "target_eng_sign": 1.0,
+      "mu": 0.0093,
+      "tau": 0.0277,
+      "ate_calibrated": 0.0395,
+      "se_calibrated": 0.0333,
+      "ci95": [
+        -0.0258,
+        0.1048
+      ],
+      "still_significant": false
+    },
+    "note": "naive pool mixes +/- engagement-loading controls -> mu cancels (wrong-signed); sign-aware orients each NC into the target confounding direction before pooling."
+  },
+  "negative_controls": {
+    "n_controls": 6,
+    "n_pass_null": 4,
+    "controls": [
+      {
+        "outcome": "disability",
+        "ate": -0.0451,
+        "se": 0.0188,
+        "ci95": [
+          -0.082,
+          -0.0082
+        ],
+        "base_rate": 0.0954,
+        "eng_sign": -1.0,
+        "ate_oriented": 0.0451,
+        "qini": 0.8257,
+        "pass_null": false
+      },
+      {
+        "outcome": "gender",
+        "ate": 0.0022,
+        "se": 0.028,
+        "ci95": [
+          -0.0526,
+          0.0571
+        ],
+        "base_rate": 0.5953,
+        "eng_sign": 1.0,
+        "ate_oriented": 0.0022,
+        "qini": 70.0041,
+        "pass_null": true
+      },
+      {
+        "outcome": "age_band",
+        "ate": -0.0307,
+        "se": 0.0275,
+        "ci95": [
+          -0.0847,
+          0.0233
+        ],
+        "base_rate": 0.3152,
+        "eng_sign": 1.0,
+        "ate_oriented": -0.0307,
+        "qini": 39.2975,
+        "pass_null": true
+      },
+      {
+        "outcome": "highest_education",
+        "ate": -0.0045,
+        "se": 0.0195,
+        "ci95": [
+          -0.0427,
+          0.0336
+        ],
+        "base_rate": 0.171,
+        "eng_sign": 1.0,
+        "ate_oriented": -0.0045,
+        "qini": -8.3873,
+        "pass_null": true
+      },
+      {
+        "outcome": "imd_band",
+        "ate": -0.0178,
+        "se": 0.0258,
+        "ci95": [
+          -0.0684,
+          0.0329
+        ],
+        "base_rate": 0.462,
+        "eng_sign": 1.0,
+        "ate_oriented": -0.0178,
+        "qini": -25.5513,
+        "pass_null": true
+      },
+      {
+        "outcome": "num_of_prev_attempts",
+        "ate": -0.0615,
+        "se": 0.0189,
+        "ci95": [
+          -0.0986,
+          -0.0243
+        ],
+        "base_rate": 0.1086,
+        "eng_sign": -1.0,
+        "ate_oriented": 0.0615,
+        "qini": -32.6724,
+        "pass_null": false
+      }
+    ]
+  },
+  "qini_empirical_null": {
+    "qini_observed": -51.1123,
+    "null_mu": 7.2527,
+    "null_tau": 39.8011,
+    "z": -1.466,
+    "p_one_sided": 0.9287,
+    "exceeds_spurious_heterogeneity": false
+  },
+  "multiple_treatment": {
+    "multiple_T": {
+      "definitions": [
+        {
+          "definition": "strict",
+          "treat_rate": 0.641,
+          "ate": 0.0378,
+          "se": 0.0116,
+          "ci95": [
+            0.0151,
+            0.0604
+          ],
+          "sig": true
+        },
+        {
+          "definition": "ontime",
+          "treat_rate": 0.806,
+          "ate": 0.0488,
+          "se": 0.0185,
+          "ci95": [
+            0.0126,
+            0.085
+          ],
+          "sig": true
+        },
+        {
+          "definition": "early3",
+          "treat_rate": 0.26,
+          "ate": 0.0189,
+          "se": 0.0135,
+          "ci95": [
+            -0.0076,
+            0.0454
+          ],
+          "sig": false
+        },
+        {
+          "definition": "early7",
+          "treat_rate": 0.086,
+          "ate": 0.0272,
+          "se": 0.0224,
+          "ci95": [
+            -0.0168,
+            0.0711
+          ],
+          "sig": false
+        },
+        {
+          "definition": "any",
+          "treat_rate": 0.967,
+          "ate": 0.035,
+          "se": 0.1208,
+          "ci95": [
+            -0.2017,
+            0.2717
+          ],
+          "sig": false
+        }
+      ],
+      "all_same_sign": true,
+      "ate_range": [
+        0.0189,
+        0.0488
+      ]
+    },
+    "positive_controls": {
+      "field": "gender",
+      "sign_aware_mu": 0.0093,
+      "all_recover": true,
+      "injections": [
+        {
+          "field": "gender",
+          "delta_true": 0.05,
+          "ate_recovered": 0.0529,
+          "ate_calibrated": 0.0436,
+          "se": 0.028,
+          "ci95": [
+            -0.002,
+            0.1077
+          ],
+          "recovers_delta": true
+        },
+        {
+          "field": "gender",
+          "delta_true": 0.1,
+          "ate_recovered": 0.1051,
+          "ate_calibrated": 0.0958,
+          "se": 0.028,
+          "ci95": [
+            0.0501,
+            0.1601
+          ],
+          "recovers_delta": true
+        }
+      ]
+    },
+    "n_train": 5859
+  }
+}

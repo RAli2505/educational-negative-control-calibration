@@ -1,0 +1,11 @@
+\begin{table}[htbp]\centering\small
+\caption{Gaussian stress test at a true effect of zero. Each method column gives bias, 95\% coverage, and false-positive rate, respectively.}\label{tab:gaussian-stress}
+\begin{tabularx}{\textwidth}{Xlll}\toprule
+Scenario & Raw & Unaligned & Aligned\\\midrule
+Matched & +0.060, 33.2\%, 66.8\% & +0.060, 99.3\%, 0.7\% & +0.000, 94.8\%, 5.2\% \\
+Unequal, mean one & +0.060, 33.2\%, 66.8\% & +0.070, 99.6\%, 0.4\% & -0.000, 99.5\%, 0.5\% \\
+Weak controls & +0.060, 32.7\%, 67.3\% & +0.063, 68.1\%, 31.9\% & +0.033, 79.0\%, 21.0\% \\
+Sign error & +0.060, 32.9\%, 67.1\% & +0.060, 99.3\%, 0.7\% & +0.030, 98.5\%, 1.5\% \\
+Dominant control & +0.060, 33.6\%, 66.4\% & +0.010, 100.0\%, 0.0\% & -0.050, 100.0\%, 0.0\% \\
+Dominant + sign error & +0.060, 33.0\%, 67.0\% & +0.010, 100.0\%, 0.0\% & +0.005, 100.0\%, 0.0\% \\
+\bottomrule\end{tabularx}\end{table}

@@ -1,0 +1,182 @@
+{
+  "dataset": "XES3G5M",
+  "protocol": {
+    "seed": 20260626,
+    "threshold_quantile": 0.5,
+    "n_learners": 6000,
+    "min_interactions": 20,
+    "early_end": 0.3,
+    "middle_end": 0.6,
+    "negative_controls": [
+      "early_accuracy_high",
+      "early_ability_high",
+      "early_activity_high",
+      "early_concept_diversity_high"
+    ],
+    "holdout": "user-disjoint 80/20"
+  },
+  "thresholds_from_training_cohort": {
+    "middle_accuracy": 0.6337959688826025,
+    "middle_spacing_regularity": 0.23730313688580573,
+    "late_accuracy": 0.6363636363636364,
+    "early_ability": -0.04044513419795896,
+    "early_accuracy": 0.5833333333333334,
+    "early_activity": 19.0,
+    "early_concept_diversity": 15.0,
+    "early_wrong_concepts": 7.0
+  },
+  "design_a": {
+    "treatment": "mid_window_accuracy_ge_train_median",
+    "uncalibrated": {
+      "ate": 0.22957369428863694,
+      "se": 0.01932145177127473,
+      "ci95": [
+        0.19170364881693847,
+        0.2674437397603354
+      ]
+    },
+    "naive_calibration": {
+      "mu": 0.00818187646122586,
+      "tau": 0.021869410515632424,
+      "ate": 0.22139181782741107
+    },
+    "sign_aware": {
+      "mu": 0.00818187646122586,
+      "tau": 0.021869410515632424,
+      "ate": 0.22139181782741107,
+      "ci95": [
+        0.16419508134348737,
+        0.2785885543113348
+      ],
+      "evalue": 2.5278324364125924
+    },
+    "negative_controls": {
+      "early_accuracy_high": {
+        "estimate": 0.04260735359819516,
+        "se": 0.008518106194938967,
+        "orientation": 1,
+        "oriented_estimate": 0.04260735359819516
+      },
+      "early_ability_high": {
+        "estimate": -0.006641387508221246,
+        "se": 0.011358947984789619,
+        "orientation": 1,
+        "oriented_estimate": -0.006641387508221246
+      },
+      "early_activity_high": {
+        "estimate": 0.003634103311283494,
+        "se": 0.005787034604351482,
+        "orientation": 1,
+        "oriented_estimate": 0.003634103311283494
+      },
+      "early_concept_diversity_high": {
+        "estimate": -0.006872563556353964,
+        "se": 0.007397520782204141,
+        "orientation": 1,
+        "oriented_estimate": -0.006872563556353964
+      }
+    },
+    "qini_empirical_null": {
+      "observed": -4.36433450584471,
+      "mean": 1.6034614762015345,
+      "sd": 6.762321552667871,
+      "p_value": 0.377502705970543,
+      "control_qini": [
+        -8.025828997622618,
+        6.702967735236157,
+        1.8435935097187652,
+        5.893113657473833
+      ]
+    },
+    "qini_permutation_test": {
+      "n_permutations": 1000,
+      "p_value": 0.36063936063936064
+    },
+    "auuc": 86.29015054398918,
+    "n_train": 4800,
+    "n_test": 1200,
+    "n_trim": 5,
+    "treat_rate_train": 0.5
+  },
+  "design_b": {
+    "treatment": "middle_window_spacing_regularity_ge_train_median",
+    "uncalibrated": {
+      "ate": -0.06517034834073038,
+      "se": 0.03944206472165168,
+      "ci95": [
+        -0.14247679519516768,
+        0.012136098513706922
+      ]
+    },
+    "naive_calibration": {
+      "mu": -0.004266414394086569,
+      "tau": 0.0,
+      "ate": -0.060903933946643805
+    },
+    "sign_aware": {
+      "mu": -0.004266414394086569,
+      "tau": 0.0,
+      "ate": -0.060903933946643805,
+      "ci95": [
+        -0.1382103808010811,
+        0.016402512907793494
+      ],
+      "evalue": 1.5161581910143154
+    },
+    "negative_controls": {
+      "early_accuracy_high": {
+        "estimate": -0.012988492773546004,
+        "se": 0.0211915709027312,
+        "orientation": 1,
+        "oriented_estimate": -0.012988492773546004
+      },
+      "early_ability_high": {
+        "estimate": -0.004945917127712085,
+        "se": 0.024335878592794163,
+        "orientation": 1,
+        "oriented_estimate": -0.004945917127712085
+      },
+      "early_activity_high": {
+        "estimate": -0.011573766283051075,
+        "se": 0.008211619441626478,
+        "orientation": 1,
+        "oriented_estimate": -0.011573766283051075
+      },
+      "early_concept_diversity_high": {
+        "estimate": 0.012442518607962885,
+        "se": 0.008786333069459307,
+        "orientation": 1,
+        "oriented_estimate": 0.012442518607962885
+      }
+    },
+    "qini_empirical_null": {
+      "observed": -0.3590042611576685,
+      "mean": 7.950363630481918,
+      "sd": 16.321273978448854,
+      "p_value": 0.6106732291061441,
+      "control_qini": [
+        9.753518386541472,
+        7.6415161796490345,
+        -12.730288483958958,
+        27.136708439696122
+      ]
+    },
+    "qini_permutation_test": {
+      "n_permutations": 1000,
+      "p_value": 0.9470529470529471
+    },
+    "auuc": -12.421504261157668,
+    "n_train": 4800,
+    "n_test": 1200,
+    "n_trim": 1986,
+    "treat_rate_train": 0.5
+  },
+  "provenance": {
+    "status": "raw_data_reproduction",
+    "causal_foundation_commits": [
+      "d0e0186",
+      "853a253"
+    ],
+    "qini_leakage_fix": "CATE is fitted on training users only."
+  }
+}
