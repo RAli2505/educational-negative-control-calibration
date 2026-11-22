@@ -1,5 +1,0 @@
-{
-  "standardization_affine_invariance": "passed across all paired summaries",
-  "oracle_sign_population_bias": "all scenarios within 5 Monte Carlo SE",
-  "summary_rows": 192
-}

@@ -1,3 +1,7 @@
 *.pdf
 code/education_models/data/xes3g5m/XES3G5M/
 *.csv.gz
+
+code/analysis/
+code/education_models/
+code/__pycache__/
